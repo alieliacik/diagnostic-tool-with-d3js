@@ -60,10 +60,10 @@ export const ContentContainer = styled.div`
     grid-template-rows: auto;
     grid-gap: 2rem;
     grid-template-areas:
-      'chart'
+      'filter'
       'cards'
       'buttons'
-      'filter';
+      'chart';
   }
 `
 export const FiltersContainer = styled.div`
@@ -109,7 +109,7 @@ export const ButtonsTitle = styled.h3`
   font-size: 1.8rem;
   font-weight: 300;
   /* keyframes with styled-components. */
-  animation: ${OpacityAnimation} 2s;
+  animation: ${OpacityAnimation} 1s;
   margin-bottom: 2rem;
 `
 export const Buttons = styled.div`
@@ -162,5 +162,5 @@ export const CardsContainer = styled.div`
 `
 export const ChartContainer = styled.div`
   grid-area: chart;
-  animation: ${OpacityAnimation} 2s;
+  animation: ${OpacityAnimation} 1s;
 `

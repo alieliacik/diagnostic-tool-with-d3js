@@ -31,16 +31,17 @@ const Chart = (props) => {
 
     const svg = select(svgRef.current)
 
+    let range = [7, (windowWidth * 83) / 100]
+    if (windowWidth > 960) {
+      range = [8, 525]
+    }
     const xScale = scaleLinear()
       .domain([0, labels.length - 1])
-      .range([8.5, (windowWidth * 83) / 100])
+      .range(range)
 
-    const xScaleAxis = scaleBand()
-      .domain(labels)
-      .paddingInner(1)
-      .range([7, (windowWidth * 83) / 100])
+    const xScaleAxis = scaleBand().domain(labels).paddingInner(1).range(range)
 
-    const yScale = scaleLinear().domain([0, 110]).range([250, 0])
+    const yScale = scaleLinear().domain([0, 115]).range([245, 0])
 
     const xAxis = axisBottom(xScaleAxis)
     svg.select('.x-axis').style('transform', 'translateY(260px)').call(xAxis)
@@ -49,7 +50,7 @@ const Chart = (props) => {
       .x((value, index) => xScale(index))
       .y0(250)
       .y1((value) => yScale(value))
-      .curve(curveCardinal)
+      .curve(curveCardinal.tension(0.2))
 
     svg
       .selectAll('.area')
@@ -57,8 +58,9 @@ const Chart = (props) => {
       .join('path')
       .attr('class', 'area')
       .attr('d', (value) => myArea(value))
-      .attr('fill', '#0071C5')
+      .attr('fill', 'rgba(0, 113, 197, 0.7)')
       .attr('stroke', '#0071C5')
+      .attr('stroke-width', 1.5)
 
     svg
       .selectAll('.dot')
@@ -66,8 +68,8 @@ const Chart = (props) => {
       .join('circle')
       .attr('class', 'dot')
       .attr('stroke', '#fff')
-      .attr('stroke-width', windowWidth / 530 > 3 ? 3 : windowWidth / 530)
-      .attr('r', windowWidth / 180 > 8 ? 8 : windowWidth / 150)
+      .attr('stroke-width', windowWidth > 768 ? 3 : 1.5)
+      .attr('r', windowWidth > 768 ? 7 : 5)
       .attr('fill', '#0071C5')
       .attr('cx', (value, index) => xScale(index))
       .attr('cy', yScale)
