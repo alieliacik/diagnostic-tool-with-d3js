@@ -33,7 +33,7 @@ const Chart = (props) => {
 
     let range = [7, (windowWidth * 83) / 100]
     if (windowWidth > 960) {
-      range = [8, 525]
+      range = [8, 460]
     }
     const xScale = scaleLinear()
       .domain([0, labels.length - 1])
