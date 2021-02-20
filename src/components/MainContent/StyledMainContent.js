@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { OpacityAnimation } from '../StyledComponents/OpacityAnimation'
 
 export const MainContentContainer = styled.main`
@@ -60,10 +60,10 @@ export const ContentContainer = styled.div`
     grid-template-rows: auto;
     grid-gap: 2rem;
     grid-template-areas:
-      'filter'
+      'chart'
       'cards'
       'buttons'
-      'chart';
+      'filter';
   }
 `
 export const FiltersContainer = styled.div`

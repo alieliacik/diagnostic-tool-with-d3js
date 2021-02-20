@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import {
   CircularProgressbarWithChildren,
   buildStyles,
