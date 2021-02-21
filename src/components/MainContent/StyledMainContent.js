@@ -21,7 +21,7 @@ export const Container = styled.div`
 
   @media (max-width: 60em) {
     width: 100%;
-    margin: 0 3.5rem;
+    margin: 0 2rem;
   }
 `
 export const Title = styled.h1`
