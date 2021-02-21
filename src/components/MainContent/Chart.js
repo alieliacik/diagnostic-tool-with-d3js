@@ -31,27 +31,32 @@ const Chart = (props) => {
 
     const svg = select(svgRef.current)
 
+    // Creates responsive range for xScale.
     let range = [7, (windowWidth * 83) / 100]
     if (windowWidth > 960) {
       range = [8, 460]
     }
+
     const xScale = scaleLinear()
       .domain([0, labels.length - 1])
       .range(range)
 
-    const xScaleAxis = scaleBand().domain(labels).paddingInner(1).range(range)
-
     const yScale = scaleLinear().domain([0, 115]).range([245, 0])
 
-    const xAxis = axisBottom(xScaleAxis)
+    // scaleBand helps me to add month names to the axisBottom.
+    const xAxisLabels = scaleBand().domain(labels).paddingInner(1).range(range)
+    const xAxis = axisBottom(xAxisLabels)
+    // Places axis under the chart.
     svg.select('.x-axis').style('transform', 'translateY(260px)').call(xAxis)
 
+    // Creates Area Chart.
     const myArea = area()
       .x((value, index) => xScale(index))
       .y0(250)
       .y1((value) => yScale(value))
       .curve(curveCardinal.tension(0.2))
 
+    // Creates Area.
     svg
       .selectAll('.area')
       .data([data])
@@ -62,6 +67,7 @@ const Chart = (props) => {
       .attr('stroke', '#0071C5')
       .attr('stroke-width', 1.5)
 
+    // Places dots for each data.
     svg
       .selectAll('.dot')
       .data(data)
@@ -74,6 +80,7 @@ const Chart = (props) => {
       .attr('cx', (value, index) => xScale(index))
       .attr('cy', yScale)
 
+    // Places scores above the dot.
     svg
       .selectAll('.text')
       .data(data)
@@ -86,6 +93,7 @@ const Chart = (props) => {
       .attr('y', yScale)
       .text((value) => `${value}%`)
 
+    // Calculates windows width.
     const handleResize = () => {
       setWindowWith(window.innerWidth)
     }

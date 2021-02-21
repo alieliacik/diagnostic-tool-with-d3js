@@ -109,6 +109,6 @@ const SampleText = styled.p`
 `
 
 const NA = styled.p`
-  font-size: 0.8rem;
+  font-size: 9px;
   margin-top: 0.2rem;
 `

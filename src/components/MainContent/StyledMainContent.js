@@ -20,7 +20,8 @@ export const Container = styled.div`
   padding: ${({ padding }) => padding};
 
   @media (max-width: 60em) {
-    width: 95%;
+    width: 100%;
+    margin: 0 3.5rem;
   }
 `
 export const Title = styled.h1`
@@ -64,6 +65,7 @@ export const ContentContainer = styled.div`
       'cards'
       'buttons'
       'chart';
+    justify-content: center;
   }
 `
 export const FiltersContainer = styled.div`
