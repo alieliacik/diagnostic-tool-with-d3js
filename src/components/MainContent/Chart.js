@@ -31,7 +31,7 @@ const Chart = (props) => {
 
     const svg = select(svgRef.current)
 
-    // Creates responsive range for xScale.
+    // Creates responsive range for xScale
     let range = [7, (windowWidth * 83) / 100]
     if (windowWidth > 960) {
       range = [8, 460]
