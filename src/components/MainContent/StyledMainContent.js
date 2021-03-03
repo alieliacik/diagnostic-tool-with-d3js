@@ -132,7 +132,7 @@ export const Button = styled.button`
 
   /* Smaller box-shadow and no transform gives user a beter experience. */
   box-shadow: ${({ isSelected }) =>
-    isSelected
+    !isSelected
       ? '0 3px 6px 0 rgba(0, 0, 0, 0.3)'
       : ' 0 1.5px 3px 0 rgba(0, 0, 0, 0.3)'};
 
